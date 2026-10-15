@@ -1,13 +1,21 @@
-#include <windows.h>
-
-#define MAX_NAME_STRING 256
-#define HInstance() GetModuleHandle(NULL)
+#include "pch.h"
 
 WCHAR WindowClass[MAX_NAME_STRING];
 WCHAR WindowTitle[MAX_NAME_STRING];
 
 INT	WindowHeight;
 INT WindowWidth;
+
+LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	switch (message) {
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	}
+
+	return DefWindowProc(hWnd, message, wParam, lParam);
+}
 
 int CALLBACK	WinMain(
 	HINSTANCE,
@@ -41,7 +49,7 @@ int CALLBACK	WinMain(
 
 	wcex.hInstance = HInstance();
 
-	wcex.lpfnWndProc = DefWindowProc;
+	wcex.lpfnWndProc = WindowProcess;
 
 	RegisterClassEx(&wcex);
 
