@@ -1,5 +1,9 @@
 #include "pch.h"
 
+/* ------------------------------------------- */
+/*  Global Variables						   */
+/* ------------------------------------------- */
+#pragma region Global Variables
 WCHAR WindowClass[MAX_NAME_STRING];
 WCHAR WindowTitle[MAX_NAME_STRING];
 
@@ -7,6 +11,32 @@ INT	WindowHeight;
 INT WindowWidth;
 
 HICON hIcon;
+#pragma endregion
+
+
+
+#pragma region PreDeclerations
+VOID InitializeVariables();
+VOID CreateWindowClass();
+VOID InitializeWindow();
+VOID MessageLoop();
+LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+#pragma endregion
+
+#pragma region Operations
+int CALLBACK	WinMain(
+	HINSTANCE,
+	HINSTANCE,
+	LPSTR,
+	int
+) {
+	InitializeVariables();
+	CreateWindowClass();
+	InitializeWindow();
+	MessageLoop();
+
+	return 0;
+}
 
 LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -18,16 +48,13 @@ LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
 
 	return DefWindowProc(hWnd, message, wParam, lParam);
 }
+#pragma endregion
 
-int CALLBACK	WinMain(
-	HINSTANCE,
-	HINSTANCE,
-	LPSTR,
-	int
-) {
-
-	/* INIT Global Variables */
-
+/* ------------------------------------------- */
+/*  Functions								   */
+/* ------------------------------------------- */
+#pragma region Functions
+VOID InitializeVariables() {
 	LoadString(HInstance(), IDS_PERGAMENAME, WindowTitle, MAX_NAME_STRING);
 	LoadString(HInstance(), IDS_WINDOWCLASS, WindowClass, MAX_NAME_STRING);
 
@@ -35,9 +62,9 @@ int CALLBACK	WinMain(
 	WindowWidth = 1280;
 
 	hIcon = LoadIcon(HInstance(), MAKEINTRESOURCE(IDI_MAINICON));
+}
 
-	/* Create window Class*/
-
+VOID CreateWindowClass() {
 	WNDCLASSEX wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -52,7 +79,7 @@ int CALLBACK	WinMain(
 	wcex.hIconSm = hIcon;
 
 	wcex.lpszClassName = WindowClass;
-	
+
 	wcex.lpszMenuName = nullptr;
 
 	wcex.hInstance = HInstance();
@@ -60,9 +87,9 @@ int CALLBACK	WinMain(
 	wcex.lpfnWndProc = WindowProcess;
 
 	RegisterClassEx(&wcex);
+}
 
-	/* Create and Display Window */
-
+VOID InitializeWindow() {
 	HWND hWnd = CreateWindowEx(
 		0,
 		WindowClass,
@@ -75,14 +102,16 @@ int CALLBACK	WinMain(
 		nullptr
 	);
 
-	if (!hWnd) 
+	if (!hWnd)
 	{
 		MessageBox(nullptr, L"Failed to create window", L"Error", MB_OK);
-		return 0;
+		PostQuitMessage(0);
 	}
 
 	ShowWindow(hWnd, SW_SHOW);
+}
 
+VOID MessageLoop() {
 	MSG msg = { 0 };
 	while (msg.message != WM_QUIT)
 	{
@@ -96,6 +125,5 @@ int CALLBACK	WinMain(
 			// Game loop code would go here
 		}
 	}
-
-	return 0;
 }
+#pragma endregion
