@@ -28,13 +28,13 @@ int CALLBACK	WinMain(
 
 	/* INIT Global Variables */
 
+	LoadString(HInstance(), IDS_PERGAMENAME, WindowTitle, MAX_NAME_STRING);
+	LoadString(HInstance(), IDS_WINDOWCLASS, WindowClass, MAX_NAME_STRING);
+
 	WindowHeight = 720;
 	WindowWidth = 1280;
 
 	hIcon = LoadIcon(HInstance(), MAKEINTRESOURCE(IDI_MAINICON));
-
-	wcscpy_s(WindowClass, L"Window");
-	wcscpy_s(WindowTitle, L"Window");
 
 	/* Create window Class*/
 
