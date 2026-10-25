@@ -19,6 +19,9 @@
     <Filter Include="Source\pch">
       <UniqueIdentifier>{37069d40-a1b8-4db0-8a43-d73ef27ab131}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Icons">
+      <UniqueIdentifier>{c091d151-8fdb-4957-a785-7eed801e6aa6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\WinMain.cpp">
@@ -32,5 +35,18 @@
     <ClInclude Include="Source\pch.h">
       <Filter>Source\pch</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="PhoenixEngine.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Icons\logo.ico">
+      <Filter>Resources\Icons</Filter>
+    </Image>
   </ItemGroup>
 </Project>

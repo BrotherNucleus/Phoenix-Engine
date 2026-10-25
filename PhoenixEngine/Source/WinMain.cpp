@@ -6,6 +6,8 @@ WCHAR WindowTitle[MAX_NAME_STRING];
 INT	WindowHeight;
 INT WindowWidth;
 
+HICON hIcon;
+
 LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	switch (message) {
@@ -24,11 +26,17 @@ int CALLBACK	WinMain(
 	int
 ) {
 
+	/* INIT Global Variables */
+
 	WindowHeight = 720;
 	WindowWidth = 1280;
 
+	hIcon = LoadIcon(HInstance(), MAKEINTRESOURCE(IDI_MAINICON));
+
 	wcscpy_s(WindowClass, L"Window");
 	wcscpy_s(WindowTitle, L"Window");
+
+	/* Create window Class*/
 
 	WNDCLASSEX wcex;
 
@@ -40,8 +48,8 @@ int CALLBACK	WinMain(
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(NULL_BRUSH);
 
-	wcex.hIcon = LoadIcon(0, IDI_APPLICATION); //icons
-	wcex.hIconSm = LoadIcon(0, IDI_APPLICATION);
+	wcex.hIcon = hIcon;
+	wcex.hIconSm = hIcon;
 
 	wcex.lpszClassName = WindowClass;
 	
@@ -52,6 +60,8 @@ int CALLBACK	WinMain(
 	wcex.lpfnWndProc = WindowProcess;
 
 	RegisterClassEx(&wcex);
+
+	/* Create and Display Window */
 
 	HWND hWnd = CreateWindowEx(
 		0,
