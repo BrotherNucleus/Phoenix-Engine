@@ -30,6 +30,18 @@
     <Filter Include="Source\Public\Platform\Win32">
       <UniqueIdentifier>{814857f0-859e-48b0-90a4-f1e634a3bdf8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Private\Common">
+      <UniqueIdentifier>{f46a9b1d-b429-4e12-8897-4ffd0c978774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Common">
+      <UniqueIdentifier>{626c017e-210c-408b-8a01-caef863255a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Public\Core">
+      <UniqueIdentifier>{646a865d-4eee-45af-aa82-a61154ef6848}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Private\Core">
+      <UniqueIdentifier>{f772adff-fb7a-47f6-bbf8-bb51eeaaed54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Phoenix.cpp">
@@ -37,6 +49,15 @@
     </ClCompile>
     <ClCompile Include="Source\Platform\Win32\IApplication.cpp">
       <Filter>Source\Private\Platform\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\Logger.cpp">
+      <Filter>Source\Private\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\PerProjectSettings.cpp">
+      <Filter>Source\Private\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\Time.cpp">
+      <Filter>Source\Private\Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +69,15 @@
     </ClInclude>
     <ClInclude Include="Source\Platform\Win32\WinEntry.h">
       <Filter>Source\Public\Platform\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\Logger.h">
+      <Filter>Source\Public\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\PerProjectSettings.h">
+      <Filter>Source\Public\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\Time.h">
+      <Filter>Source\Public\Common</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

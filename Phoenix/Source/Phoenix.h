@@ -13,4 +13,11 @@
 	#define PHOENIX_API __declspec(dllimport)
 #endif
 
+#define MAX_PATH 1024
+#define MAX_NAME_STRING 256
+#define HInstance() GetModuleHandle(NULL)
+
 #include "Common/Logger.h"
+#include "Common/Time.h"
+#include "Core/PerProjectSettings.h"
+

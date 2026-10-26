@@ -11,8 +11,10 @@ int CALLBACK	WinMain(
 ) {
 	auto EntryApp = EntryApplication();
 
-	Logger logger;
+	PerProjectSettings Settings;
 
+	EntryApp->SetupPerGameSettings();
+	Logger logger;
 	EntryApp->Initialize();
 
 	MSG msg = { 0 };

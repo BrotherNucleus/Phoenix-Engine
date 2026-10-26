@@ -13,12 +13,19 @@ Application::~Application()
 {
 }
 
+VOID Application::SetupPerGameSettings()
+{
+	PerProjectSettings::SetProjectName(IDS_PERGAMENAME);
+	PerProjectSettings::SetShortName(IDS_SHORTNAME);
+	PerProjectSettings::SetMainIcon(IDI_MAINICON);
+}
+
 VOID Application::Initialize()
 {
-	MessageBox(0, L"Hello World!", 0,0);
+	Logger::PrintLog(L"Hello World! %s, Thank You!", L"Phoenix");
 }
 
 VOID Application::Update()
 {
-	MessageBox(0, L"Uodating...", 0, 0);
+	MessageBox(0, L"Update", 0, 0);
 }

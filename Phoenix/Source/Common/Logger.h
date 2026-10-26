@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 class PHOENIX_API Logger {
 
 private:
@@ -10,5 +12,11 @@ public:
 public:
 	Logger();
 	~Logger();
+
+	static VOID PrintLog(const WCHAR* Log, ...);
+
+	static std::wstring LogDirectory();
+
+	static std::wstring LogFile();
 
 };

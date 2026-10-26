@@ -59,7 +59,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>Phoenix.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>D:\Phoenix-Engine\Phoenix\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Phoenix\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -76,6 +76,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>Phoenix.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\Phoenix\Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>NotSet</SubSystem>
@@ -83,10 +84,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Common\Logger.cpp" />
+    <ClCompile Include="Source\Common\Time.cpp" />
+    <ClCompile Include="Source\Core\PerProjectSettings.cpp" />
     <ClCompile Include="Source\Phoenix.cpp" />
     <ClCompile Include="Source\Platform\Win32\IApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Common\Logger.h" />
+    <ClInclude Include="Source\Common\Time.h" />
+    <ClInclude Include="Source\Core\PerProjectSettings.h" />
     <ClInclude Include="Source\Phoenix.h" />
     <ClInclude Include="Source\Platform\Win32\IApplication.h" />
     <ClInclude Include="Source\Platform\Win32\WinEntry.h" />
