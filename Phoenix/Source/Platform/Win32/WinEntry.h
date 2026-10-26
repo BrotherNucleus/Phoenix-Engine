@@ -11,6 +11,8 @@ int CALLBACK	WinMain(
 ) {
 	auto EntryApp = EntryApplication();
 
+	Logger logger;
+
 	EntryApp->Initialize();
 
 	MSG msg = { 0 };
