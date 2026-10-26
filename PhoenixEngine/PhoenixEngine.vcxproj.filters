@@ -30,12 +30,18 @@
     <ClCompile Include="Source\pch.cpp">
       <Filter>Source\pch</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Application.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\pch.h">
       <Filter>Source\pch</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
+      <Filter>Source\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Application.h">
       <Filter>Source\Public</Filter>
     </ClInclude>
   </ItemGroup>

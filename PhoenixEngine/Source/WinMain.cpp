@@ -24,6 +24,7 @@ LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lP
 #pragma endregion
 
 #pragma region Operations
+/*
 int CALLBACK	WinMain(
 	HINSTANCE,
 	HINSTANCE,
@@ -37,6 +38,7 @@ int CALLBACK	WinMain(
 
 	return 0;
 }
+*/
 
 LRESULT CALLBACK WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
