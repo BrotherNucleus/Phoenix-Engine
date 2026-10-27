@@ -36,11 +36,17 @@
     <Filter Include="Source\Public\Common">
       <UniqueIdentifier>{626c017e-210c-408b-8a01-caef863255a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Public\Core">
-      <UniqueIdentifier>{646a865d-4eee-45af-aa82-a61154ef6848}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Private\Core">
+    <Filter Include="Source\Core">
       <UniqueIdentifier>{f772adff-fb7a-47f6-bbf8-bb51eeaaed54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Private">
+      <UniqueIdentifier>{3e09b368-a7b1-4bcd-a832-077dd4a77a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Public">
+      <UniqueIdentifier>{0107a7f2-eab4-4080-9367-391294bff17d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Core\Classes">
+      <UniqueIdentifier>{723ff3ea-4d43-4551-b8a3-2ec28c29d24a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -53,11 +59,20 @@
     <ClCompile Include="Source\Common\Logger.cpp">
       <Filter>Source\Private\Common</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\PerProjectSettings.cpp">
-      <Filter>Source\Private\Core</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Common\Time.cpp">
       <Filter>Source\Private\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\PerProjectSettings.cpp">
+      <Filter>Source\Core\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\Core.cpp">
+      <Filter>Source\Core\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\CoreMinimal.cpp">
+      <Filter>Source\Core\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Core\CoreDefinitions.cpp">
+      <Filter>Source\Core\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,11 +88,20 @@
     <ClInclude Include="Source\Common\Logger.h">
       <Filter>Source\Public\Common</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Core\PerProjectSettings.h">
-      <Filter>Source\Public\Core</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Common\Time.h">
       <Filter>Source\Public\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\PerProjectSettings.h">
+      <Filter>Source\Core\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\Core.h">
+      <Filter>Source\Core\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\CoreMinmal.h">
+      <Filter>Source\Core\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Core\CoreDefinitions.h">
+      <Filter>Source\Core\Public</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
