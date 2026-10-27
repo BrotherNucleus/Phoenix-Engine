@@ -1,7 +1,8 @@
 #include "Phoenix.h"
 #include "IApplication.h"
+#include "Common/CmdLArgs.h"
 
-extern IApplication* EntryApplication();
+extern Win32::IApplication* EntryApplication();
 
 int CALLBACK	WinMain(
 	HINSTANCE,
@@ -14,6 +15,7 @@ int CALLBACK	WinMain(
 	PerProjectSettings Settings;
 
 	EntryApp->SetupPerGameSettings();
+	CmdLineArgs::ReadArguments();
 	Logger logger;
 	EntryApp->Initialize();
 

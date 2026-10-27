@@ -1,20 +1,23 @@
 #pragma once
 
-#define ENTRYAPP(x) IApplication* EntryApplication() { return new x; }
+#define ENTRYAPP(x) Win32::IApplication* EntryApplication() { return new x; }
 
-class PHOENIX_API IApplication {
+namespace Win32 {
 
-public:
-	IApplication();
+	class PHOENIX_API IApplication {
 
-	virtual ~IApplication() {};
+	public:
+		IApplication();
 
-public:
-	virtual VOID SetupPerGameSettings() = 0;
+		virtual ~IApplication() {};
 
-	virtual VOID Initialize() = 0;
+	public:
+		virtual VOID SetupPerGameSettings() = 0;
 
-	virtual VOID Update() = 0;
-};
+		virtual VOID Initialize() = 0;
 
-IApplication* EntryApplication();
+		virtual VOID Update() = 0;
+	};
+
+	IApplication* EntryApplication();
+}

@@ -9,32 +9,8 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Source\Private">
-      <UniqueIdentifier>{2998f16d-0831-48c4-9018-0d49bb2f3df9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Public">
-      <UniqueIdentifier>{80b34ccd-419c-4e05-9c51-c6f618a46842}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\pch">
       <UniqueIdentifier>{7e582ac3-ed4b-41ad-a7a3-116930ac458c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Private\Platform">
-      <UniqueIdentifier>{2fb651c7-6756-422b-a7f1-743d40a73919}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Private\Platform\Win32">
-      <UniqueIdentifier>{a3328ae6-c7e6-4031-833a-d043f19c679e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Public\Platform">
-      <UniqueIdentifier>{17d54ec6-7ec5-4348-a5ee-38f6a655a97e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Public\Platform\Win32">
-      <UniqueIdentifier>{814857f0-859e-48b0-90a4-f1e634a3bdf8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Private\Common">
-      <UniqueIdentifier>{f46a9b1d-b429-4e12-8897-4ffd0c978774}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source\Public\Common">
-      <UniqueIdentifier>{626c017e-210c-408b-8a01-caef863255a0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Core">
       <UniqueIdentifier>{f772adff-fb7a-47f6-bbf8-bb51eeaaed54}</UniqueIdentifier>
@@ -48,19 +24,49 @@
     <Filter Include="Source\Core\Classes">
       <UniqueIdentifier>{723ff3ea-4d43-4551-b8a3-2ec28c29d24a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Engine">
+      <UniqueIdentifier>{01a11275-8b84-4912-813a-6bb3e34d9d01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Public">
+      <UniqueIdentifier>{be52b9c6-6191-4aa2-b420-a49f5b072df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Private">
+      <UniqueIdentifier>{5c930b3a-c2b2-4898-aca4-01ca9abdc140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Engine\Classes">
+      <UniqueIdentifier>{1cd62476-6cff-45dc-8b28-57b7eb0c7faa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common">
+      <UniqueIdentifier>{f46a9b1d-b429-4e12-8897-4ffd0c978774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform">
+      <UniqueIdentifier>{2fb651c7-6756-422b-a7f1-743d40a73919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\Win32">
+      <UniqueIdentifier>{a3328ae6-c7e6-4031-833a-d043f19c679e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Public">
+      <UniqueIdentifier>{18e4ae9b-cfa0-479c-b519-ddf0aaad034d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Private">
+      <UniqueIdentifier>{3bc6d492-2da2-4df0-9d00-fa1c51cbdfd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\Win32\Public">
+      <UniqueIdentifier>{32851f27-f349-40e1-96d2-8cb7fc455e77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\Win32\Private">
+      <UniqueIdentifier>{a3896346-de84-422b-993e-85f46d7772ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\Win32\Classes">
+      <UniqueIdentifier>{69be0a30-9423-4ef1-822d-b154ffbf7ad0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Common\Classes">
+      <UniqueIdentifier>{44627709-00d1-4de4-a3c9-e0541a8a1d14}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Phoenix.cpp">
       <Filter>Source\pch</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Platform\Win32\IApplication.cpp">
-      <Filter>Source\Private\Platform\Win32</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Common\Logger.cpp">
-      <Filter>Source\Private\Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Common\Time.cpp">
-      <Filter>Source\Private\Common</Filter>
     </ClCompile>
     <ClCompile Include="Source\Core\PerProjectSettings.cpp">
       <Filter>Source\Core\Private</Filter>
@@ -74,22 +80,28 @@
     <ClCompile Include="Source\Core\CoreDefinitions.cpp">
       <Filter>Source\Core\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Engine\Simulation.cpp">
+      <Filter>Source\Engine\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Engine\PEngine.cpp">
+      <Filter>Source\Engine\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\Time.cpp">
+      <Filter>Source\Common\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\Logger.cpp">
+      <Filter>Source\Common\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platform\Win32\IApplication.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Common\CmdLArgs.cpp">
+      <Filter>Source\Common\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Phoenix.h">
       <Filter>Source\pch</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Platform\Win32\IApplication.h">
-      <Filter>Source\Public\Platform\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Platform\Win32\WinEntry.h">
-      <Filter>Source\Public\Platform\Win32</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Common\Logger.h">
-      <Filter>Source\Public\Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Common\Time.h">
-      <Filter>Source\Public\Common</Filter>
     </ClInclude>
     <ClInclude Include="Source\Core\PerProjectSettings.h">
       <Filter>Source\Core\Classes</Filter>
@@ -102,6 +114,27 @@
     </ClInclude>
     <ClInclude Include="Source\Core\CoreDefinitions.h">
       <Filter>Source\Core\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\PEngine.h">
+      <Filter>Source\Engine\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Engine\Simulation.h">
+      <Filter>Source\Engine\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\Time.h">
+      <Filter>Source\Common\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform\Win32\WinEntry.h">
+      <Filter>Source\Platform\Win32\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform\Win32\IApplication.h">
+      <Filter>Source\Platform\Win32\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\CmdLArgs.h">
+      <Filter>Source\Common\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Common\Logger.h">
+      <Filter>Source\Common\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

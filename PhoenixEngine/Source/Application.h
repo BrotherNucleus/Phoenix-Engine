@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Platform/Win32/IApplication.h"
+#include "Engine/Simulation.h"
 
-class Application : public IApplication {
+class Application : public Phoenix::Simulation {
 
 public:
 	Application();

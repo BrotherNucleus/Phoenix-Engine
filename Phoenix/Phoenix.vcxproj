@@ -84,22 +84,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Common\CmdLArgs.cpp" />
     <ClCompile Include="Source\Common\Logger.cpp" />
     <ClCompile Include="Source\Common\Time.cpp" />
     <ClCompile Include="Source\Core\Core.cpp" />
     <ClCompile Include="Source\Core\CoreDefinitions.cpp" />
     <ClCompile Include="Source\Core\CoreMinimal.cpp" />
     <ClCompile Include="Source\Core\PerProjectSettings.cpp" />
+    <ClCompile Include="Source\Engine\PEngine.cpp" />
+    <ClCompile Include="Source\Engine\Simulation.cpp" />
     <ClCompile Include="Source\Phoenix.cpp" />
     <ClCompile Include="Source\Platform\Win32\IApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Common\CmdLArgs.h" />
     <ClInclude Include="Source\Common\Logger.h" />
     <ClInclude Include="Source\Common\Time.h" />
     <ClInclude Include="Source\Core\Core.h" />
     <ClInclude Include="Source\Core\CoreDefinitions.h" />
     <ClInclude Include="Source\Core\CoreMinmal.h" />
     <ClInclude Include="Source\Core\PerProjectSettings.h" />
+    <ClInclude Include="Source\Engine\PEngine.h" />
+    <ClInclude Include="Source\Engine\Simulation.h" />
     <ClInclude Include="Source\Phoenix.h" />
     <ClInclude Include="Source\Platform\Win32\IApplication.h" />
     <ClInclude Include="Source\Platform\Win32\WinEntry.h" />
