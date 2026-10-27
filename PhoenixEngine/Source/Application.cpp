@@ -22,10 +22,16 @@ VOID Application::SetupPerGameSettings()
 
 VOID Application::Initialize()
 {
-	Logger::PrintLog(L"Hello World! %s, Thank You!", L"Phoenix");
+	Logger::PrintDebugSeperator();
+	Logger::PrintLog(L"Initializing Application...\n");
+	Logger::PrintLog(L"Project Name: %s\n", PerProjectSettings::ProjectName());
+	Logger::PrintLog(L"Short Name: %s\n", PerProjectSettings::ShortName());
+	Logger::PrintLog(L"Boot Time: %s\n", PerProjectSettings::BootTime());
+	Logger::PrintDebugSeperator();
+
+	Logger::StartMTail();
 }
 
 VOID Application::Update()
 {
-	MessageBox(0, L"Update", 0, 0);
 }
