@@ -1,6 +1,7 @@
 #include "Phoenix.h"
 #include "IApplication.h"
 #include "Common/CmdLArgs.h"
+#include "Engine/SplashScreen.h"
 
 extern Win32::IApplication* EntryApplication();
 
@@ -17,6 +18,8 @@ int CALLBACK	WinMain(
 	EntryApp->SetupPerGameSettings();
 	CmdLineArgs::ReadArguments();
 	Logger logger;
+
+	SplashScreen::Open();
 	EntryApp->Initialize();
 
 	MSG msg = { 0 };
