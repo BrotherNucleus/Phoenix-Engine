@@ -52,7 +52,7 @@ LRESULT SplashWindow::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPA
 
 			hdc = BeginPaint(hWnd, &ps);
 
-			Win32::Utils::AddBitmap(L"..\\Phoenix\\Assets\\Images\\SplashScreen.bmp", hdc);
+			Win32::Utils::AddBitmap(PerProjectSettings::SplashURL(), hdc);
 
 			SetBkMode(hdc, TRANSPARENT);
 			SetTextColor(hdc, RGB(255, 255, 255));

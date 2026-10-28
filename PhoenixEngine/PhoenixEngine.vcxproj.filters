@@ -24,21 +24,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\pch.cpp">
-      <Filter>Source\pch</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Application.cpp">
-      <Filter>Source\Private</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Source\pch.h">
-      <Filter>Source\pch</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Source\Public</Filter>
+      <Filter>Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Application.h">
+    <ClInclude Include="Source\PhoenixEngine.h">
       <Filter>Source\Public</Filter>
     </ClInclude>
   </ItemGroup>
@@ -51,5 +40,10 @@
     <Image Include="Assets\Icons\logo.ico">
       <Filter>Resources\Icons</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source\PhoenixEngine.cpp">
+      <Filter>Source\Private</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

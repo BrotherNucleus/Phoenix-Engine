@@ -8,5 +8,7 @@ namespace Phoenix {
 	public:
 		Simulation();
 		~Simulation();
+
+		virtual VOID PreInitialize() override;
 	};
 }
