@@ -10,7 +10,7 @@ namespace Engine {
 	{
 		return g_PhoenixEngine.GetEngineMode();
 	}
-	std::wstring PHOENIX_API GetModeString()
+	WSTRING PHOENIX_API GetModeString()
 	{
 		switch (Engine::GetMode())
 		{

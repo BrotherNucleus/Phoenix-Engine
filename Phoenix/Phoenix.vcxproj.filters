@@ -110,6 +110,9 @@
     <ClCompile Include="Source\Platform\Win32\Win32Utils.cpp">
       <Filter>Source\Platform\Win32\Private</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Platform\Win32\w32Caption.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Phoenix.h">
@@ -159,6 +162,9 @@
     </ClInclude>
     <ClInclude Include="Source\Platform\Win32\Win32Utils.h">
       <Filter>Source\Platform\Win32\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform\Win32\w32Caption.h">
+      <Filter>Source\Platform\Win32\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

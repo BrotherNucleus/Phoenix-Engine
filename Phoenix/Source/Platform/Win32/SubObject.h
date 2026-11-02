@@ -6,16 +6,18 @@ namespace Win32
 	{
 	public:
 
-		HWND GetHandle() {	return m_Handle;	}	
+		HWND Handle() {	return m_Handle;	}	
 
-		SubObject(std::wstring className, std::wstring classTitle, HICON icon);
+		VOID Handle(HWND handle) { m_Handle = handle; }
+
+		SubObject(WSTRING className, WSTRING classTitle, HICON icon);
 		virtual ~SubObject();
 		virtual VOID CreateNewClass();
 		LRESULT WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 		virtual VOID Initialize() = 0;
 	protected:
-		std::wstring m_Class;
-		std::wstring m_Title;
+		WSTRING m_Class;
+		WSTRING m_Title;
 
 		HICON m_hIcon;
 
@@ -23,7 +25,6 @@ namespace Win32
 
 		static LRESULT CALLBACK SetupMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 		static LRESULT AssignMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-		virtual LRESULT MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) = 0;
-		virtual LRESULT CommonMessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+		virtual LRESULT MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	};
 }

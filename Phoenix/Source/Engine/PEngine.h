@@ -16,7 +16,7 @@ namespace Engine {
 	VOID PHOENIX_API SetMode(EngineMode mode);
 	EngineMode PHOENIX_API GetMode();
 
-	std::wstring PHOENIX_API GetModeString();
+	WSTRING PHOENIX_API GetModeString();
 }
 
 using namespace Engine;

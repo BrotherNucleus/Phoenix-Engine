@@ -3,8 +3,16 @@
 #include "CoreDefinitions.h"
 
 #include "Engine/PEngine.h"
-#include "Engine/Simulation.h"
 
 #include "Common/Logger.h"
 #include "Common/Time.h"
 #include "Core/PerProjectSettings.h"
+
+
+#ifdef WIN32	
+	#include "Platform/Win32/Win32Utils.h"
+	#include "Platform/Win32/SubObject.h"
+	#include "Platform/Win32/w32Caption.h"
+	#include "Platform/Win32/Window.h"
+	#include "Platform/Win32/IApplication.h"
+#endif

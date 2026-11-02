@@ -15,9 +15,9 @@ public:
 
 	static VOID PrintLog(const WCHAR* Log, ...);
 
-	static std::wstring LogDirectory();
+	static WSTRING LogDirectory();
 
-	static std::wstring LogFile();
+	static WSTRING LogFile();
 
 	static VOID PrintDebugSeperator();
 

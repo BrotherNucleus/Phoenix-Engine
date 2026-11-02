@@ -1,6 +1,5 @@
 #include "Phoenix.h"
 #include "SplashScreen.h"
-#include "Platform/Win32/Win32Utils.h"
 
 
 namespace SplashScreen
@@ -24,12 +23,12 @@ namespace SplashScreen
 
 	VOID AddMessage(const WCHAR* message)
 	{
-		PostMessage(m_SplashWindow->GetHandle(), WM_OUTPUTMESSAGE, (WPARAM)message, 0);
+		PostMessage(m_SplashWindow->Handle(), WM_OUTPUTMESSAGE, (WPARAM)message, 0);
 	}
 }
 
 SplashWindow::SplashWindow()
-	: Win32::Window(L"SplashScreen", L"Phoenix Engine", nullptr, 800, 600)
+	: Win32::Window(L"SplashScreen", nullptr, Win32::WindowType::POPUP)
 {
 	wcscpy_s(m_outputMessage, L"Initializing Phoenix Engine...");
 	Win32::Window::CreateNewClass();
@@ -58,13 +57,13 @@ LRESULT SplashWindow::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPA
 			SetTextColor(hdc, RGB(255, 255, 255));
 
 			if (Engine::GetMode() != Engine::EngineMode::RELEASE) {
-				std::wstring engineModeText = Engine::GetModeString() + L" Mode";
+				WSTRING engineModeText = Engine::GetModeString() + L" Mode";
 				SetTextAlign(hdc, TA_CENTER);
-				TextOut(hdc, m_Width - 60, 15, engineModeText.c_str(), wcslen(engineModeText.c_str()));
+				TextOut(hdc, Size().cy - 60, 15, engineModeText.c_str(), wcslen(engineModeText.c_str()));
 			}
 
 			SetTextAlign(hdc, TA_CENTER);
-			TextOut(hdc, m_Width / 2, m_Height - 30, m_outputMessage, wcslen(m_outputMessage));
+			TextOut(hdc, Size().cx / 2, Size().cy - 30, m_outputMessage, wcslen(m_outputMessage));
 			EndPaint(hWnd, &ps);
 		}
 		break;
@@ -72,10 +71,10 @@ LRESULT SplashWindow::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPA
 		{
 			const WCHAR* msg = (WCHAR*)wParam;
 			wcscpy_s(m_outputMessage, msg);
-			RedrawWindow(GetHandle(), NULL, NULL, RDW_INVALIDATE);
+			RedrawWindow();
 			return 0;
 		}
 	}
 
-	return CommonMessageHandler(hWnd, message, wParam, lParam);
+	return Window::MessageHandler(hWnd, message, wParam, lParam);
 }

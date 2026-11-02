@@ -27,11 +27,11 @@ VOID Logger::PrintLog(const WCHAR* Log, ...)
 
 	std::wfstream outfile;
 
-	outfile.open(std::wstring(LogDirectory() + L"/" + LogFile()), std::ios_base::app);
+	outfile.open(WSTRING(LogDirectory() + L"/" + LogFile()), std::ios_base::app);
 
 	if (outfile.is_open())
 	{
-		std::wstring string = buffer;
+		WSTRING string = buffer;
 		outfile << L"{" << Time::GetDateTime() << L"} " << string;
 		outfile.close();
 		OutputDebugString(string.c_str());
@@ -42,7 +42,7 @@ VOID Logger::PrintLog(const WCHAR* Log, ...)
 	}
 }
 
-std::wstring Logger::LogDirectory()
+WSTRING Logger::LogDirectory()
 {
 	WCHAR path[MAX_PATH_PHX];
 	WCHAR* AppDataLocal;
@@ -56,7 +56,7 @@ std::wstring Logger::LogDirectory()
 	return path;
 }
 
-std::wstring Logger::LogFile()
+WSTRING Logger::LogFile()
 {
 	WCHAR path[MAX_PATH_PHX];
 	wcscpy_s(path, MAX_PATH_PHX, PerProjectSettings::ProjectName());
@@ -67,11 +67,11 @@ std::wstring Logger::LogFile()
 
 VOID Logger::PrintDebugSeperator()
 {
-	std::wstring seperator = L"--------------------------------------------------\n\n";
+	WSTRING seperator = L"--------------------------------------------------\n\n";
 
 #ifdef _DEBUG
 	std::wfstream outfile;
-	outfile.open(std::wstring(LogDirectory() + L"/" + LogFile()), std::ios_base::app);
+	outfile.open(WSTRING(LogDirectory() + L"/" + LogFile()), std::ios_base::app);
 	if (outfile.is_open())
 	{
 		outfile << seperator;
@@ -118,7 +118,7 @@ VOID Logger::StartMTail()
 	Logger::PrintLog(L"Starting MTail...\n");
 	WCHAR path[MAX_PATH_PHX] = { 0 };
 	GetCurrentDirectoryW(MAX_PATH_PHX, path);
-	std::wstring url = path + std::wstring(L"/mTAIL.exe");
-	std::wstring params = L"\"" + LogDirectory() + L"/" + LogFile() + L"\" /start";
+	WSTRING url = path + WSTRING(L"/mTAIL.exe");
+	WSTRING params = L"\"" + LogDirectory() + L"/" + LogFile() + L"\" /start";
 	ShellExecute(0, NULL, url.c_str(), params.c_str(), NULL, SW_SHOWDEFAULT);
 }
