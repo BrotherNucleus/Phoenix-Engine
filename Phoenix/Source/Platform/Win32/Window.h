@@ -24,6 +24,10 @@ namespace Win32
 
 		VOID OnNonClientPaint(HRGN region);
 		VOID PaintCaption(HDC hdc);
+		VOID OnNonClientLMBDown();
+		VOID OnGetMinMaxInfo(MINMAXINFO* minmax);
+		VOID OnExitSizeMove();
+		VOID OnPaint();
 	protected:
 		SIZE m_Size;
 		WindowType m_WindowType;

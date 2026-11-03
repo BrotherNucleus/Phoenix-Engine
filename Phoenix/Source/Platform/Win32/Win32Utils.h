@@ -36,5 +36,26 @@ namespace Win32 {
 			DWORD dwStyle = GetWindowLong(hWnd, GCL_STYLE);
 			SetClassLong(hWnd, GCL_STYLE, (dwStyle & ~dwRemove) | dwAdd);
 		}
+
+		inline BOOL PHOENIX_API IsWindowFullscreen(HWND hWnd) {
+			WINDOWPLACEMENT placement;
+			GetWindowPlacement(hWnd, &placement);
+
+			if (placement.showCmd == SW_MAXIMIZE) {
+				return TRUE;
+			}
+			return FALSE;
+		}
+
+		inline VOID PHOENIX_API MaximizeWindow(HWND hWnd) {
+			WINDOWPLACEMENT placement;
+			GetWindowPlacement(hWnd, &placement);
+			if(placement.showCmd == SW_MAXIMIZE) {
+				ShowWindow(hWnd, SW_NORMAL);
+			}
+			else {
+				ShowWindow(hWnd, SW_MAXIMIZE);
+			}
+		}
 	}
 }

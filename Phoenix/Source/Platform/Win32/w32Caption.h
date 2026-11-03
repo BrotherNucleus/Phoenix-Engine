@@ -1,5 +1,9 @@
 #pragma once
 
+#define CB_CLOSE 0
+#define CB_MINIMIZE 1
+#define CB_MAXIMIZE 2
+
 namespace Win32
 {
 	class Caption
@@ -7,11 +11,12 @@ namespace Win32
 	public:
 		struct CaptionButton
 		{
+			INT Command = -1;
 			WSTRING Text = L"X";
 			int Width = 50;
 			RECT Rect;
 
-			CaptionButton(WSTRING text, int width = 50) : Text(text), Width(width) {
+			CaptionButton(WSTRING text, INT Command, int width = 50) : Text(text), Command(Command), Width(width) {
 			}
 		};
 
