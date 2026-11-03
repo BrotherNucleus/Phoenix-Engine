@@ -29,6 +29,8 @@ namespace Phoenix {
 		Win32::Window::CreateNewClass();
 		Size(1280, 720);
 		Win32::Window::Initialize();
+		SplashScreen::Close();
+		
 	}
 
 	LRESULT Simulation::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)

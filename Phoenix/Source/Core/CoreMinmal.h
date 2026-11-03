@@ -16,3 +16,5 @@
 	#include "Platform/Win32/Window.h"
 	#include "Platform/Win32/IApplication.h"
 #endif
+
+#include "Core/CoreRenderer.h"

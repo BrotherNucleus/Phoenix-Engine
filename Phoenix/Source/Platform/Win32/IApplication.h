@@ -12,7 +12,7 @@ namespace Win32 {
 		virtual ~IApplication() {};
 
 	public:
-		virtual VOID SetupPerGameSettings() = 0;
+		virtual VOID SetupPerProjectSettings() = 0;
 
 		virtual VOID PreInitialize() = 0;
 

@@ -18,7 +18,7 @@ namespace SplashScreen
 
 	VOID Close()
 	{
-		return VOID PHOENIX_API();
+		SendMessage(m_SplashWindow->Handle(), WM_CLOSE, 0, 0);
 	}
 
 	VOID AddMessage(const WCHAR* message)

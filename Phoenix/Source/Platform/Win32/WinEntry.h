@@ -14,7 +14,7 @@ int CALLBACK	WinMain(
 
 	PerProjectSettings Settings;
 
-	EntryApp->SetupPerGameSettings();
+	EntryApp->SetupPerProjectSettings();
 	CmdLineArgs::ReadArguments();
 	Logger logger;
 

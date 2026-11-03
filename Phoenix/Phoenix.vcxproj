@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Core\CoreRenderer.cpp" />
     <ClCompile Include="Source\Common\CmdLArgs.cpp" />
     <ClCompile Include="Source\Common\Logger.cpp" />
     <ClCompile Include="Source\Common\Time.cpp" />
@@ -102,6 +103,7 @@
     <ClCompile Include="Source\Platform\Win32\w32Caption.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Core\CoreRenderer.h" />
     <ClInclude Include="Source\Common\CmdLArgs.h" />
     <ClInclude Include="Source\Common\Logger.h" />
     <ClInclude Include="Source\Common\Time.h" />

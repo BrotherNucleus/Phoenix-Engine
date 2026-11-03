@@ -9,5 +9,7 @@
 
 #include <string>
 #include <list>
+#include <wrl.h>
+#include <shellapi.h>
 
 #include "Core/Core.h"

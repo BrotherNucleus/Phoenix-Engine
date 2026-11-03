@@ -12,7 +12,7 @@ public:
 
 public:
 
-	VOID SetupPerGameSettings();
+	VOID SetupPerProjectSettings();
 
 	VOID Initialize();
 
@@ -29,7 +29,7 @@ PhoenixEngine::~PhoenixEngine()
 {
 }
 
-VOID PhoenixEngine::SetupPerGameSettings()
+VOID PhoenixEngine::SetupPerProjectSettings()
 {
 	PerProjectSettings::SetProjectName(IDS_PERGAMENAME);
 	PerProjectSettings::SetShortName(IDS_SHORTNAME);
