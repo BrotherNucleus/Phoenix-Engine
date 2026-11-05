@@ -3,8 +3,8 @@
 namespace Win32 {
 	namespace Utils {
 		BOOL AddBitmap(const WCHAR* filePath, HDC hWinDC, INT x, INT y) {
-			BITMAP qBitmap;
-			HDC hLocalDC = CreateCompatibleDC(hWinDC);
+			BITMAP	qBitmap;
+			HDC		hLocalDC = CreateCompatibleDC(hWinDC);
 
 			HBITMAP hBitmap = (HBITMAP)LoadImageW(NULL, filePath, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
 			if (hBitmap == NULL) {

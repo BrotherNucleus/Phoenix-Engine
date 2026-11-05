@@ -13,10 +13,10 @@ namespace Engine {
 
 	extern PEngine g_PhoenixEngine;
 
-	VOID PHOENIX_API SetMode(EngineMode mode);
-	EngineMode PHOENIX_API GetMode();
+	VOID		PHOENIX_API SetMode(EngineMode mode);
+	EngineMode	PHOENIX_API GetMode();
 
-	WSTRING PHOENIX_API GetModeString();
+	WSTRING		PHOENIX_API GetModeString();
 }
 
 using namespace Engine;
@@ -26,8 +26,8 @@ public:
 	PEngine();
 	~PEngine();
 
-	void SetEngineMode(EngineMode mode);
-	EngineMode GetEngineMode();
+	void		SetEngineMode(EngineMode mode);
+	EngineMode	GetEngineMode();
 
 private:
 	EngineMode m_EngineMode;

@@ -16,14 +16,14 @@ namespace Win32
 
 	VOID Window::Initialize() {
 
-		RECT desktop;
-		const HWND hDesktop = GetDesktopWindow();
+		RECT		desktop;
+		const HWND	hDesktop = GetDesktopWindow();
 		GetWindowRect(hDesktop, &desktop);
 
-		RECT R = { 0, 0, Size().cx, Size().cy };
+		RECT R =		{ 0, 0, Size().cx, Size().cy };
 		AdjustWindowRect(&R, m_WindowType, FALSE);
-		int width = R.right - R.left;
-		int height = R.bottom - R.top;
+		int width =		R.right - R.left;
+		int height =	R.bottom - R.top;
 
 		m_Handle = CreateWindow(
 			m_Class.c_str(),
@@ -44,17 +44,17 @@ namespace Win32
 
 		switch (message)
 		{
-		case WM_NCCREATE: { OnNonClientCreate(); } return true;
-		case WM_NCACTIVATE: { OnNonClientActivate(LOWORD(wParam) != WA_INACTIVE); } return true;
-		case WM_NCPAINT: { OnNonClientPaint((HRGN)wParam); } return false;
-		case WM_NCLBUTTONDOWN: { OnNonClientLMBDown(); } break;
-		case WM_NCLBUTTONDBLCLK: { Win32::Utils::MaximizeWindow(Handle()); } return 0;
+		case WM_NCCREATE:			{ OnNonClientCreate(); } return true;
+		case WM_NCACTIVATE:			{ OnNonClientActivate(LOWORD(wParam) != WA_INACTIVE); } return true;
+		case WM_NCPAINT:			{ OnNonClientPaint((HRGN)wParam); } return false;
+		case WM_NCLBUTTONDOWN:		{ OnNonClientLMBDown(); } break;
+		case WM_NCLBUTTONDBLCLK:	{ Win32::Utils::MaximizeWindow(Handle()); } return 0;
 
 
-		case WM_GETMINMAXINFO: { OnGetMinMaxInfo((MINMAXINFO*)lParam); } return 0;
-		case WM_EXITSIZEMOVE: { OnExitSizeMove(); } break;
-		case WM_PAINT: { OnPaint(); } break;	
-		case WM_TIMER: { RedrawWindow(); } break;
+		case WM_GETMINMAXINFO:		{ OnGetMinMaxInfo((MINMAXINFO*)lParam); } return 0;
+		case WM_EXITSIZEMOVE:		{ OnExitSizeMove(); } break;
+		case WM_PAINT:				{ OnPaint(); } break;	
+		case WM_TIMER:				{ RedrawWindow(); } break;
 		}
 		return SubObject::MessageHandler(hWnd, message, wParam, lParam);
 	}
@@ -84,34 +84,22 @@ namespace Win32
 
 	VOID Window::OnNonClientPaint(HRGN region)
 	{
-		HDC hdc = GetDCEx(Handle(), region, DCX_WINDOW | DCX_INTERSECTRGN | DCX_USESTYLE);
-
-		RECT rect;
+		HDC		hdc =		GetDCEx(Handle(), region, DCX_WINDOW | DCX_INTERSECTRGN | DCX_USESTYLE);
+		RECT	rect;
 		GetWindowRect(Handle(), &rect);
-
-		SIZE size = SIZE{ rect.right - rect.left, rect.bottom - rect.top };
-
-		HBITMAP hBitmap = CreateCompatibleBitmap(hdc, size.cx, size.cy);
-		HANDLE hOld = SelectObject(hdc, hBitmap);
-
-		RECT newRect = { 0, 0, size.cx, size.cy };
-
-
-
-
-		HBRUSH hBrush = CreateSolidBrush(RGB(36, 36, 36));
+		SIZE	size =		SIZE{ rect.right - rect.left, rect.bottom - rect.top };
+		HBITMAP hBitmap =	CreateCompatibleBitmap(hdc, size.cx, size.cy);
+		HANDLE	hOld =		SelectObject(hdc, hBitmap);
+		RECT	newRect =	{ 0, 0, size.cx, size.cy };
+		HBRUSH	hBrush =	CreateSolidBrush(RGB(36, 36, 36));
 
 		FillRect(hdc, &newRect, hBrush);
 		if (Active()) {
 			hBrush = CreateSolidBrush(RGB(250, 100, 15));
 			FrameRect(hdc, &newRect, hBrush);
 		}
-
 		PaintCaption(hdc);
-
 		DeleteObject(hBrush);
-
-
 
 
 		BitBlt(hdc, 0, 0, size.cx, size.cy, hdc, 0, 0, SRCCOPY);
@@ -122,11 +110,9 @@ namespace Win32
 
 	VOID Window::PaintCaption(HDC hdc) {
 
-		RECT rect;
+		RECT	rect;
 		GetWindowRect(Handle(), &rect);
-
-		SIZE size = SIZE{ rect.right - rect.left, rect.bottom - rect.top };
-
+		SIZE	size = SIZE{ rect.right - rect.left, rect.bottom - rect.top };
 		if (ShowTitle()) {
 
 			rect = RECT{ 0, 0, size.cx, 30 };
@@ -139,7 +125,7 @@ namespace Win32
 		}
 		int spacing = 0;
 
-		POINT cursorPos;
+		POINT	cursorPos;
 		GetCursorPos(&cursorPos);
 
 		GetWindowRect(Handle(), &rect);
@@ -174,13 +160,13 @@ namespace Win32
 
 	VOID Window::OnNonClientLMBDown()
 	{
-		RECT windowRect;
+		RECT		windowRect;
 		GetWindowRect(Handle(), &windowRect);
 
-		const LONG width = windowRect.right - windowRect.left;
-		const LONG captionHeight = 30;
+		const LONG	width = windowRect.right - windowRect.left;
+		const LONG	captionHeight = 30;
 
-		POINT cursorPosition;
+		POINT		cursorPosition;
 		GetCursorPos(&cursorPosition);
 
 		cursorPosition.x -= windowRect.left;
@@ -202,6 +188,7 @@ namespace Win32
 				switch (button.Command) {
 				case CB_CLOSE:
 					SendMessage(Handle(), WM_CLOSE, 0, 0);
+					PostQuitMessage(0);
 					break;
 				case CB_MAXIMIZE:
 					Win32::Utils::MaximizeWindow(Handle());
@@ -238,10 +225,10 @@ namespace Win32
 
 	VOID Window::OnPaint() {
 		PAINTSTRUCT ps;
-		HDC hdc = BeginPaint(Handle(), &ps);
-		RECT rect;
+		HDC			hdc = BeginPaint(Handle(), &ps);
+		RECT		rect;
 		GetClientRect(Handle(), &rect);
-		HBRUSH hBrush = CreateSolidBrush(RGB(36, 36, 36));
+		HBRUSH		hBrush = CreateSolidBrush(RGB(36, 36, 36));
 		FillRect(hdc, &rect, hBrush);
 		DeleteObject(hBrush);
 		EndPaint(Handle(), &ps);

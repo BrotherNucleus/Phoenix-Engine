@@ -7,8 +7,8 @@ namespace Phoenix {
 		Simulation();
 		~Simulation();
 
-		virtual VOID PreInitialize() override;
+		virtual VOID		PreInitialize() override;
 
-		virtual LRESULT MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
+		virtual LRESULT		MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
 	};
 }

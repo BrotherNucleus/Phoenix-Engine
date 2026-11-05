@@ -2,15 +2,15 @@
 
 namespace Engine {
 	PEngine g_PhoenixEngine;
-	VOID PHOENIX_API SetMode(EngineMode mode)
+	VOID		PHOENIX_API SetMode(EngineMode mode)
 	{
 		g_PhoenixEngine.SetEngineMode(mode);
 	}
-	EngineMode PHOENIX_API GetMode()
+	EngineMode	PHOENIX_API GetMode()
 	{
 		return g_PhoenixEngine.GetEngineMode();
 	}
-	WSTRING PHOENIX_API GetModeString()
+	WSTRING		PHOENIX_API GetModeString()
 	{
 		switch (Engine::GetMode())
 		{
@@ -42,12 +42,12 @@ PEngine::~PEngine()
 {
 }
 
-void PEngine::SetEngineMode(EngineMode mode)
+void		PEngine::SetEngineMode(EngineMode mode)
 {
 	m_EngineMode = mode;
 }
 
-EngineMode PEngine::GetEngineMode()
+EngineMode	PEngine::GetEngineMode()
 {
 	return m_EngineMode;
 }

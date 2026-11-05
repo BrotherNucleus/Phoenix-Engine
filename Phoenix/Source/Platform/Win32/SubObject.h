@@ -13,8 +13,8 @@ namespace Win32
 		SubObject(WSTRING className, WSTRING classTitle, HICON icon);
 		virtual ~SubObject();
 		virtual VOID CreateNewClass();
-		LRESULT WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 		virtual VOID Initialize() = 0;
+		LRESULT WindowProcess(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	protected:
 		WSTRING m_Class;
 		WSTRING m_Title;
@@ -23,8 +23,8 @@ namespace Win32
 
 		HWND m_Handle;
 
-		static LRESULT CALLBACK SetupMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-		static LRESULT AssignMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+		static	LRESULT CALLBACK SetupMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+		static	LRESULT CALLBACK AssignMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 		virtual LRESULT MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 	};
 }

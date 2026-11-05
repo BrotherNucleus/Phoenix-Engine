@@ -15,32 +15,32 @@ namespace Win32
 	VOID SubObject::CreateNewClass() {
 		WNDCLASSEX wcex;
 
-		wcex.cbSize = sizeof(WNDCLASSEX);
-		wcex.style = CS_HREDRAW | CS_VREDRAW;
+		wcex.cbSize		= sizeof(WNDCLASSEX);
+		wcex.style		= CS_HREDRAW | CS_VREDRAW;
 		wcex.cbClsExtra = 0;
 		wcex.cbWndExtra = 0;
 
-		wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
-		wcex.hbrBackground = (HBRUSH)(CreateSolidBrush(RGB(46, 46, 46)));
+		wcex.hCursor		= LoadCursor(nullptr, IDC_ARROW);
+		wcex.hbrBackground	= (HBRUSH)(CreateSolidBrush(RGB(46, 46, 46)));
 
-		wcex.hIcon = m_hIcon;
-		wcex.hIconSm = m_hIcon;
+		wcex.hIcon		= m_hIcon;
+		wcex.hIconSm	= m_hIcon;
 
-		wcex.lpszClassName = m_Class.c_str();
+		wcex.lpszClassName	= m_Class.c_str();
 
-		wcex.lpszMenuName = nullptr;
+		wcex.lpszMenuName	= nullptr;
 
-		wcex.hInstance = HInstance();
+		wcex.hInstance		= HInstance();
 
-		wcex.lpfnWndProc = SetupMassageHandler;
+		wcex.lpfnWndProc	= SetupMassageHandler;
 
 		RegisterClassEx(&wcex);
 	}
 
 	LRESULT SubObject::SetupMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 		if(message == WM_NCCREATE) {
-			const CREATESTRUCTW* const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
-			Win32::SubObject* const pThis = static_cast<Win32::SubObject*>(pCreate->lpCreateParams);
+			const CREATESTRUCTW*	const pCreate = reinterpret_cast<CREATESTRUCTW*>(lParam);
+			Win32::SubObject*		const pThis = static_cast<Win32::SubObject*>(pCreate->lpCreateParams);
 			SetWindowLongPtr(hWnd, GWLP_USERDATA, reinterpret_cast<LONG_PTR>(pThis));
 			SetWindowLongPtr(hWnd, GWLP_WNDPROC, reinterpret_cast<LONG_PTR>(Win32::SubObject::AssignMassageHandler));
 			pThis->Handle(hWnd);

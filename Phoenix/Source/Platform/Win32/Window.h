@@ -29,16 +29,16 @@ namespace Win32
 		VOID OnExitSizeMove();
 		VOID OnPaint();
 	protected:
-		SIZE m_Size;
-		WindowType m_WindowType;
+		SIZE		m_Size;
+		WindowType	m_WindowType;
 
-		BOOL m_bActive;
+		BOOL		m_bActive;
 	public:
-		SIZE Size() { return m_Size; }
-		BOOL Active() { return m_bActive; }
+		SIZE Size()					{ return m_Size; }
+		BOOL Active()				{ return m_bActive; }
 
-		VOID Size(SIZE m_Size) { this->m_Size = m_Size; }
-		VOID Size(INT cx, INT cy) { this->m_Size.cx = cx; this->m_Size.cy = cy; }
-		VOID Active(BOOL active) { this->m_bActive = active; }
+		VOID Size(SIZE m_Size)		{ this->m_Size = m_Size; }
+		VOID Size(INT cx, INT cy)	{ this->m_Size.cx = cx; this->m_Size.cy = cy; }
+		VOID Active(BOOL active)	{ this->m_bActive = active; }
 	};
 }

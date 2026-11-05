@@ -8,9 +8,9 @@
 namespace Win32 {
 
 	enum WindowType : DWORD {
-		STATIC = WS_OVERLAPPED,
-		RESIZABLE = WS_SIZEBOX,
-		POPUP = WS_POPUP,
+		STATIC =		WS_OVERLAPPED,
+		RESIZABLE =		WS_SIZEBOX,
+		POPUP =			WS_POPUP,
 	};
 
 	namespace Utils {
