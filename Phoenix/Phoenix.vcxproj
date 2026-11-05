@@ -96,11 +96,12 @@
     <ClCompile Include="Source\Engine\Simulation.cpp" />
     <ClCompile Include="Source\Engine\SplashScreen.cpp" />
     <ClCompile Include="Source\Phoenix.cpp" />
+    <ClCompile Include="Source\Platform\Win32\ChildWindow.cpp" />
     <ClCompile Include="Source\Platform\Win32\IApplication.cpp" />
     <ClCompile Include="Source\Platform\Win32\SubObject.cpp" />
+    <ClCompile Include="Source\Platform\Win32\w32Caption.cpp" />
     <ClCompile Include="Source\Platform\Win32\Win32Utils.cpp" />
     <ClCompile Include="Source\Platform\Win32\Window.cpp" />
-    <ClCompile Include="Source\Platform\Win32\w32Caption.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\CoreRenderer.h" />
@@ -115,6 +116,7 @@
     <ClInclude Include="Source\Engine\Simulation.h" />
     <ClInclude Include="Source\Engine\SplashScreen.h" />
     <ClInclude Include="Source\Phoenix.h" />
+    <ClInclude Include="Source\Platform\Win32\ChildWindow.h" />
     <ClInclude Include="Source\Platform\Win32\IApplication.h" />
     <ClInclude Include="Source\Platform\Win32\SubObject.h" />
     <ClInclude Include="Source\Platform\Win32\Win32Utils.h" />

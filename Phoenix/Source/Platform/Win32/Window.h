@@ -1,5 +1,6 @@
 #pragma once
 #include "Platform/Win32/SubObject.h"
+#include "Platform/Win32/ChildWindow.h"
 
 #include <Uxtheme.h>
 	#pragma comment(lib, "uxtheme.lib")
@@ -22,7 +23,7 @@ namespace Win32
 
 		VOID OnNonClientActivate(BOOL active);
 
-		VOID OnNonClientPaint(HRGN region);
+		VOID OnNonClientPaint(HRGN);
 		VOID PaintCaption(HDC hdc);
 		VOID OnNonClientLMBDown();
 		VOID OnGetMinMaxInfo(MINMAXINFO* minmax);
@@ -32,7 +33,7 @@ namespace Win32
 		SIZE		m_Size;
 		WindowType	m_WindowType;
 
-		BOOL		m_bActive;
+		BOOL		m_bActive = false;
 	public:
 		SIZE Size()					{ return m_Size; }
 		BOOL Active()				{ return m_bActive; }

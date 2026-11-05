@@ -54,14 +54,14 @@
     <Filter Include="Source\Platform\Win32\Public">
       <UniqueIdentifier>{32851f27-f349-40e1-96d2-8cb7fc455e77}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source\Platform\Win32\Private">
-      <UniqueIdentifier>{a3896346-de84-422b-993e-85f46d7772ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source\Platform\Win32\Classes">
       <UniqueIdentifier>{69be0a30-9423-4ef1-822d-b154ffbf7ad0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source\Common\Classes">
       <UniqueIdentifier>{44627709-00d1-4de4-a3c9-e0541a8a1d14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Platform\Win32\Private">
+      <UniqueIdentifier>{3c47fb4e-82b3-4748-9ba4-5c24cb140f93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,19 +92,16 @@
     <ClCompile Include="Source\Common\Logger.cpp">
       <Filter>Source\Common\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Platform\Win32\IApplication.cpp">
-      <Filter>Source\Platform\Win32\Private</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Common\CmdLArgs.cpp">
       <Filter>Source\Common\Private</Filter>
     </ClCompile>
     <ClCompile Include="Source\Engine\SplashScreen.cpp">
       <Filter>Source\Engine\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Platform\Win32\Window.cpp">
-      <Filter>Source\Platform\Win32\Private</Filter>
+    <ClCompile Include="Source\Core\CoreRenderer.cpp">
+      <Filter>Source\Core\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Platform\Win32\SubObject.cpp">
+    <ClCompile Include="Source\Platform\Win32\Window.cpp">
       <Filter>Source\Platform\Win32\Private</Filter>
     </ClCompile>
     <ClCompile Include="Source\Platform\Win32\Win32Utils.cpp">
@@ -113,8 +110,14 @@
     <ClCompile Include="Source\Platform\Win32\w32Caption.cpp">
       <Filter>Source\Platform\Win32\Private</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Core\CoreRenderer.cpp">
-      <Filter>Source\Core\Private</Filter>
+    <ClCompile Include="Source\Platform\Win32\SubObject.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platform\Win32\IApplication.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Platform\Win32\ChildWindow.cpp">
+      <Filter>Source\Platform\Win32\Private</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="Source\Core\CoreRenderer.h">
       <Filter>Source\Core\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Platform\Win32\ChildWindow.h">
+      <Filter>Source\Platform\Win32\Classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

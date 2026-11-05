@@ -9,8 +9,9 @@ namespace Win32 {
 
 	enum WindowType : DWORD {
 		STATIC =		WS_OVERLAPPED,
-		RESIZABLE =		WS_SIZEBOX,
-		POPUP =			WS_POPUP,
+		RESIZABLE =		WS_SIZEBOX		| WS_CLIPCHILDREN,
+		POPUP =			WS_POPUP		| WS_CLIPCHILDREN,
+		CHILD = WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS,
 	};
 
 	namespace Utils {
@@ -38,7 +39,7 @@ namespace Win32 {
 		}
 
 		inline BOOL PHOENIX_API IsWindowFullscreen(HWND hWnd) {
-			WINDOWPLACEMENT placement;
+			WINDOWPLACEMENT placement = { sizeof(WINDOWPLACEMENT) };
 			GetWindowPlacement(hWnd, &placement);
 
 			if (placement.showCmd == SW_MAXIMIZE) {
@@ -48,7 +49,7 @@ namespace Win32 {
 		}
 
 		inline VOID PHOENIX_API MaximizeWindow(HWND hWnd) {
-			WINDOWPLACEMENT placement;
+			WINDOWPLACEMENT placement = { sizeof(WINDOWPLACEMENT) };
 			GetWindowPlacement(hWnd, &placement);
 			if(placement.showCmd == SW_MAXIMIZE) {
 				ShowWindow(hWnd, SW_NORMAL);

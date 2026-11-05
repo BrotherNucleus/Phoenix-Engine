@@ -5,7 +5,7 @@
 namespace Win32
 {
 	SubObject::SubObject(WSTRING className, WSTRING classTitle, HICON icon) 
-		: m_Class(className), m_Title(classTitle), m_hIcon(icon)
+		: m_Class(className), m_Title(classTitle), m_hIcon(icon), m_Handle(nullptr)
 	{
 	}
 	SubObject::~SubObject()
@@ -52,6 +52,12 @@ namespace Win32
 
 	LRESULT SubObject::AssignMassageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 		Win32::SubObject* const pThis = reinterpret_cast<Win32::SubObject*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+		if (!pThis) return DefWindowProc(hWnd, message, wParam, lParam);
+
+		if (message == WM_NCDESTROY) {
+			SetWindowLongPtr(hWnd, GWLP_USERDATA, 0);   // later messages fall through to DefWindowProc
+			pThis->m_Handle = nullptr;
+		}
 		return pThis->MessageHandler(hWnd, message, wParam, lParam);
 	}
 

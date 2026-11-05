@@ -8,6 +8,7 @@
 #endif
 
 #include <string>
+#include <memory>
 #include <list>
 #include <wrl.h>
 #include <shellapi.h>
