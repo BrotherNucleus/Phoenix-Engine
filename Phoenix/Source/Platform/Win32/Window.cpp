@@ -49,6 +49,21 @@ namespace Win32
 		case WM_NCPAINT:			{ OnNonClientPaint((HRGN)wParam); } return false;
 		case WM_NCLBUTTONDOWN:		{ OnNonClientLMBDown(); } break;
 		case WM_NCLBUTTONDBLCLK:	{ Win32::Utils::MaximizeWindow(Handle()); } return 0;
+		case WM_NCCALCSIZE:
+			if (wParam) {
+				auto* p = reinterpret_cast<NCCALCSIZE_PARAMS*>(lParam);
+				p->rgrc[0].top += 30;
+				p->rgrc[0].left += 10;
+				p->rgrc[0].right -= 10;
+				p->rgrc[0].bottom -= 10;
+			}
+			else {
+				reinterpret_cast<RECT*>(lParam)->top += 30;
+				reinterpret_cast<RECT*>(lParam)->left += 10;
+				reinterpret_cast<RECT*>(lParam)->right -= 10;
+				reinterpret_cast<RECT*>(lParam)->bottom -= 10;
+			}
+			return 0;
 
 
 		case WM_GETMINMAXINFO:		{ OnGetMinMaxInfo((MINMAXINFO*)lParam); } return 0;
@@ -87,17 +102,14 @@ namespace Win32
 
 		RECT rect;
 		GetWindowRect(Handle(), &rect);
-		RECT newRect = { 0, 0, rect.right - rect.left, rect.bottom - rect.top };
+		RECT full = { 0, 0, rect.right - rect.left, rect.bottom - rect.top };
+
+		// Only the caption strip is non-client now, so clip to it directly.
+		IntersectClipRect(hdc, 0, 0, full.right, 30);
 
 		HBRUSH bg = CreateSolidBrush(RGB(36, 36, 36));
-		FillRect(hdc, &newRect, bg);
+		FillRect(hdc, &full, bg);
 		DeleteObject(bg);
-
-		if (Active()) {
-			HBRUSH border = CreateSolidBrush(RGB(250, 100, 15));
-			FrameRect(hdc, &newRect, border);
-			DeleteObject(border);
-		}
 
 		PaintCaption(hdc);
 		ReleaseDC(Handle(), hdc);
