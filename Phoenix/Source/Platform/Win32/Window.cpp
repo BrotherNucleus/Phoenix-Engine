@@ -53,14 +53,16 @@ namespace Win32
 
 		case WM_GETMINMAXINFO:		{ OnGetMinMaxInfo((MINMAXINFO*)lParam); } return 0;
 		case WM_EXITSIZEMOVE:		{ OnExitSizeMove(); } break;
-		//case WM_PAINT:				{ OnPaint(); } break;	
+		case WM_PAINT:				{ OnPaint(); } break;	
 		case WM_TIMER:				{ RedrawWindow(); } break;
 		}
 		return SubObject::MessageHandler(hWnd, message, wParam, lParam);
 	}
 
 	VOID Window::RedrawWindow() {
-		::RedrawWindow(Handle(), nullptr, nullptr, RDW_FRAME | RDW_INVALIDATE | RDW_NOCHILDREN);
+		SetWindowPos(Handle(), 0, 0, 0, 0, 0,
+			SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE | SWP_DRAWFRAME | SWP_FRAMECHANGED);
+		SendMessage(Handle(), WM_PAINT, 0, 0);
 	}
 
 	VOID Window::OnNonClientCreate()
@@ -80,26 +82,29 @@ namespace Win32
 		Active(active);
 	}
 
-	VOID Window::OnNonClientPaint(HRGN)
+	VOID Window::OnNonClientPaint(HRGN region)
 	{
-		HDC hdc = GetWindowDC(Handle());
-		if (!hdc) return;
-
-		RECT rect;
+		HDC		hdc =		GetDCEx(Handle(), region, DCX_WINDOW | DCX_INTERSECTRGN | DCX_USESTYLE);
+		RECT	rect;
 		GetWindowRect(Handle(), &rect);
-		RECT newRect = { 0, 0, rect.right - rect.left, rect.bottom - rect.top };
+		SIZE	size =		SIZE{ rect.right - rect.left, rect.bottom - rect.top };
+		HBITMAP hBitmap =	CreateCompatibleBitmap(hdc, size.cx, size.cy);
+		HANDLE	hOld =		SelectObject(hdc, hBitmap);
+		RECT	newRect =	{ 0, 0, size.cx, size.cy };
+		HBRUSH	hBrush =	CreateSolidBrush(RGB(36, 36, 36));
 
-		HBRUSH bg = CreateSolidBrush(RGB(36, 36, 36));
-		FillRect(hdc, &newRect, bg);
-		DeleteObject(bg);
-
+		FillRect(hdc, &newRect, hBrush);
 		if (Active()) {
-			HBRUSH border = CreateSolidBrush(RGB(250, 100, 15));
-			FrameRect(hdc, &newRect, border);
-			DeleteObject(border);
+			hBrush = CreateSolidBrush(RGB(250, 100, 15));
+			FrameRect(hdc, &newRect, hBrush);
 		}
-
 		PaintCaption(hdc);
+		DeleteObject(hBrush);
+
+
+		BitBlt(hdc, 0, 0, size.cx, size.cy, hdc, 0, 0, SRCCOPY);
+		DeleteObject(hBitmap);
+
 		ReleaseDC(Handle(), hdc);
 	}
 

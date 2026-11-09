@@ -29,58 +29,13 @@ namespace Phoenix {
 		Win32::Window::CreateNewClass();
 		Size(1280, 720);
 		Win32::Window::Initialize();
-		Logger::PrintLog(L"ClipChildren: %d\n", Win32::Utils::HasStyle(Handle(), WS_CLIPCHILDREN));
-		w_LeftWindow = std::make_unique<Win32::ChildWindow>(L"Viewport", SIZE{ 640, 720 }, RGB(66, 46, 46));
-		w_RightWindow = std::make_unique<Win32::ChildWindow>(L"Outliner", SIZE{ 640, 720 }, RGB(46, 46, 66));
-		AddChildren();
-		w_LeftWindow->CreateNewClass();   w_LeftWindow->Initialize();
-		w_RightWindow->CreateNewClass();  w_RightWindow->Initialize();
-
-		LayoutChildren();
 		SplashScreen::Close();
 		
 	}
 
-	VOID Simulation::AddChildren()
-	{
-		w_LeftWindow->AddParent(Handle());
-		w_RightWindow->AddParent(Handle());
-	}
-
 	LRESULT Simulation::MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	{
-		switch (message)
-		{
-		case WM_SIZE:
-			LayoutChildren();
-			break;
-		case WM_ERASEBKGND:
-			return 1;                       // don't erase with the class brush
-		case WM_PAINT:
-		{
-			PAINTSTRUCT ps;
-			BeginPaint(hWnd, &ps);          // validate the region, draw nothing
-			EndPaint(hWnd, &ps);
-			return 0;
-		}
-		}
-
 		return Window::MessageHandler(hWnd, message, wParam, lParam);
-	}
-
-	VOID Simulation::LayoutChildren()
-	{
-		if (!w_LeftWindow			|| !w_RightWindow			|| 
-			!w_LeftWindow->Handle() || !w_RightWindow->Handle()) return;
-
-		RECT rc;
-		GetClientRect(Handle(), &rc);
-		const int top = 0;                // leave room for your custom caption
-		const int w = rc.right * 4 / 5;
-		const int h = rc.bottom - top;
-
-		MoveWindow(w_LeftWindow->Handle(), 0, top, w, h, TRUE);
-		MoveWindow(w_RightWindow->Handle(), w, top, rc.right - w, h, TRUE);
 	}
 
 }

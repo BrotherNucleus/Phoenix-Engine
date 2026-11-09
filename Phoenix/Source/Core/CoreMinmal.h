@@ -14,7 +14,6 @@
 	#include "Platform/Win32/SubObject.h"
 	#include "Platform/Win32/w32Caption.h"
 	#include "Platform/Win32/Window.h"
-	#include "Platform/Win32/ChildWindow.h"
 	#include "Platform/Win32/IApplication.h"
 #endif
 
