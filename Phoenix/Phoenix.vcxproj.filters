@@ -63,6 +63,9 @@
     <Filter Include="Source\Common\Classes">
       <UniqueIdentifier>{44627709-00d1-4de4-a3c9-e0541a8a1d14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources\Shaders">
+      <UniqueIdentifier>{991a0057-88ef-42d4-ad04-382e20498dc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Phoenix.cpp">
@@ -172,5 +175,10 @@
     <ClInclude Include="Source\Core\CoreRenderer.h">
       <Filter>Source\Core\Public</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\Shaders\Triangle.hlsl">
+      <Filter>Resources\Shaders</Filter>
+    </None>
   </ItemGroup>
 </Project>

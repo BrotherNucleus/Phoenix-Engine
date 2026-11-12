@@ -44,4 +44,5 @@ VOID PhoenixEngine::Initialize()
 
 VOID PhoenixEngine::Update()
 {
+	Simulation::Update();
 }

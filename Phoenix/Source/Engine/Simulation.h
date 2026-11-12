@@ -9,6 +9,10 @@ namespace Phoenix {
 
 		virtual VOID		PreInitialize() override;
 
+		virtual VOID		Update() override;
+
 		virtual LRESULT		MessageHandler(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) override;
+	private:
+		CoreRenderer*		m_Renderer = nullptr;
 	};
 }

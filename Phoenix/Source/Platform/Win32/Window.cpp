@@ -24,6 +24,7 @@ namespace Win32
 		AdjustWindowRect(&R, m_WindowType, FALSE);
 		int width =		R.right - R.left;
 		int height =	R.bottom - R.top;
+		if (m_WindowType != POPUP) height += 30;
 
 		m_Handle = CreateWindow(
 			m_Class.c_str(),
@@ -49,6 +50,13 @@ namespace Win32
 		case WM_NCPAINT:			{ OnNonClientPaint((HRGN)wParam); } return false;
 		case WM_NCLBUTTONDOWN:		{ OnNonClientLMBDown(); } break;
 		case WM_NCLBUTTONDBLCLK:	{ Win32::Utils::MaximizeWindow(Handle()); } return 0;
+		case WM_NCCALCSIZE:
+			if (wParam == TRUE && m_WindowType != POPUP) {
+				LRESULT r = SubObject::MessageHandler(hWnd, message, wParam, lParam);
+				reinterpret_cast<NCCALCSIZE_PARAMS*>(lParam)->rgrc[0].top += 30;
+				return r;
+			}
+			break;
 
 
 		case WM_GETMINMAXINFO:		{ OnGetMinMaxInfo((MINMAXINFO*)lParam); } return 0;
@@ -85,6 +93,13 @@ namespace Win32
 	VOID Window::OnNonClientPaint(HRGN region)
 	{
 		HDC		hdc =		GetDCEx(Handle(), region, DCX_WINDOW | DCX_INTERSECTRGN | DCX_USESTYLE);
+
+		RECT client; GetClientRect(Handle(), &client);
+		POINT tl = { 0, 0 }; ClientToScreen(Handle(), &tl);
+		RECT wr; GetWindowRect(Handle(), &wr);
+		OffsetRect(&client, tl.x - wr.left, tl.y - wr.top);
+		ExcludeClipRect(hdc, client.left, client.top, client.right, client.bottom);
+
 		RECT	rect;
 		GetWindowRect(Handle(), &rect);
 		SIZE	size =		SIZE{ rect.right - rect.left, rect.bottom - rect.top };
